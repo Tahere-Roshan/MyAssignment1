@@ -18,8 +18,7 @@ namespace Algorithm
     {
         //Part D
 
-        //Delegate 
-        public delegate void SortedDelegate1(int[] myArray);
+        
 
         //Swap Method
         public static void Swap(int[] myArray, int i, int j)
@@ -226,11 +225,6 @@ namespace Algorithm
         //}
         public void SortByLamba(int[] myArray)
         {
-            //int[] LambaArray = new int[myArray.Length];
-            //LambaArray = myArray.OrderBy(x => x).ToArray();
-            ////Console.WriteLine("Sort by Lamba:" + myArray);
-            //for (int count = 0; count < myArray.Length; count++)
-            //    Console.WriteLine(myArray[count]);
             Array.Sort(myArray, (x, y) => x.CompareTo(y));
             for (int count = 0; count < myArray.Length; count++)
                 Console.WriteLine(myArray[count]);
@@ -238,23 +232,31 @@ namespace Algorithm
         }
 
 
+        //Delegate 
+        public delegate int SortedDelegate1(int[] myArray);
+
+        
+        //just to initial Delegated Method in the Consol App
+        public static int Spam1(int[] myArray)
+        {
+            return 1;
+        }
+
         //Method "DisplayRunningTime"
-        public void DisplayRunngTime1(int[] myArray, SortedDelegate1 sorteddelgate1)
+        public void SortDisplayRunngTime(int[] myArray, SortedDelegate1 sorteddelgate1)
         {
             Stopwatch myStopwatch = new();
             myStopwatch.Start();
-            sorteddelgate1(myArray);
+            Console.WriteLine(sorteddelgate1(myArray));
             myStopwatch.Stop();
             TimeSpan ts = myStopwatch.Elapsed;
             string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-            Console.WriteLine("RunTime" + elapsedTime);
+            Console.WriteLine("SortRunTime" + elapsedTime);
 
         }
 
-        //Part C
 
-        //Delegated Method
-        public delegate void SortedDelegate2(int[] myArray, int item);
+        //Part C
 
         //Linear Search Method-http://anh.cs.luc.edu/170/notes/CSharpHtml/searching.html
         public static int LinearSearch(int[] myArray, int item)
@@ -284,18 +286,57 @@ namespace Algorithm
             return -1;
         }
 
+        //Search By Lamba
+        public static int LambaSearch(int[] myArray, int item)
+        {
+            return Array.Find(myArray, x => x==item);
+
+
+        }
+
+        //Delegated Method
+        public delegate int SearchDelegate2(int[] myArray, int item);
+        public static int Spam2(int[] myArray, int item)
+        {
+            return 1;
+        }
+
         //Method "DisplayRunningTime"
-        public void DisplayRunngTime2(int[] myArray, int item, SortedDelegate2 sorteddelgate2)
+
+        public void SearchDisplayRunngTime1(int[] myArray, SearchDelegate2 searchdelgate2)
         {
             Stopwatch myStopwatch = new();
+            //First in the Array
             myStopwatch.Start();
-            sorteddelgate2(myArray, item);
+            Console.WriteLine(searchdelgate2(myArray, myArray[0]));
+            //searchdelgate2(myArray, myArray[0]);
             myStopwatch.Stop();
             TimeSpan ts = myStopwatch.Elapsed;
             string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-            Console.WriteLine("RunTime" + elapsedTime);
+            Console.WriteLine("FirtSearchRunTime:"+"" + elapsedTime);
+
+
+            //Middle of  the Array
+            myStopwatch.Start();
+            Console.WriteLine(searchdelgate2(myArray, myArray[(myArray.Length)/2]));
+            //searchdelgate2(myArray, myArray[0]);
+            myStopwatch.Stop();
+            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine("MiddleSearchRunTime:" + "" + elapsedTime);
+
+            //Last of  the Array
+            myStopwatch.Start();
+            Console.WriteLine(searchdelgate2(myArray, myArray[myArray.Length-1 ]));
+            //searchdelgate2(myArray, myArray[0]);
+            myStopwatch.Stop();
+            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine("LastSearchRunTime:" + "" + elapsedTime);
+
+
+
 
         }
+        
 
 
     }
