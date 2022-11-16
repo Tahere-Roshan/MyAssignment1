@@ -245,7 +245,7 @@ namespace Algorithm
         //Method "DisplayRunningTime"
         public void SortDisplayRunngTime(int[] myArray, SortedDelegate1 sorteddelgate1)
         {
-            Stopwatch myStopwatch = new();
+            Stopwatch myStopwatch = new Stopwatch();
             myStopwatch.Start();
             Console.WriteLine(sorteddelgate1(myArray));
             myStopwatch.Stop();
@@ -305,7 +305,7 @@ namespace Algorithm
 
         public void SearchDisplayRunngTime1(int[] myArray, SearchDelegate2 searchdelgate2)
         {
-            Stopwatch myStopwatch = new();
+            Stopwatch myStopwatch = new Stopwatch();
             //First in the Array
             myStopwatch.Start();
             Console.WriteLine(searchdelgate2(myArray, myArray[0]));
