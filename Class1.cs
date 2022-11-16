@@ -250,7 +250,7 @@ namespace Algorithm
             Console.WriteLine(sorteddelgate1(myArray));
             myStopwatch.Stop();
             TimeSpan ts = myStopwatch.Elapsed;
-            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             Console.WriteLine("SortRunTime" + elapsedTime);
 
         }
@@ -312,7 +312,7 @@ namespace Algorithm
             //searchdelgate2(myArray, myArray[0]);
             myStopwatch.Stop();
             TimeSpan ts = myStopwatch.Elapsed;
-            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             Console.WriteLine("FirtSearchRunTime:"+"" + elapsedTime);
 
 
@@ -321,7 +321,7 @@ namespace Algorithm
             Console.WriteLine(searchdelgate2(myArray, myArray[(myArray.Length)/2]));
             //searchdelgate2(myArray, myArray[0]);
             myStopwatch.Stop();
-            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             Console.WriteLine("MiddleSearchRunTime:" + "" + elapsedTime);
 
             //Last of  the Array
@@ -329,7 +329,7 @@ namespace Algorithm
             Console.WriteLine(searchdelgate2(myArray, myArray[myArray.Length-1 ]));
             //searchdelgate2(myArray, myArray[0]);
             myStopwatch.Stop();
-            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             Console.WriteLine("LastSearchRunTime:" + "" + elapsedTime);
 
 
