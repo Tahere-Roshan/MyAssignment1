@@ -1,4 +1,7 @@
-﻿//1-Create Dynamic Library
+﻿//Reference-https://www.tutorialsteacher.com/articles/generate-random-numbers-in-csharp
+
+
+//1-Create Dynamic Library
 
 using System;
 using System.Diagnostics;
@@ -16,9 +19,8 @@ namespace Algorithm
    
     public class Myclass
     {
-        //Part D
 
-        
+        //Part D
 
         //Swap Method
         public static void Swap(int[] myArray, int i, int j)
@@ -30,9 +32,9 @@ namespace Algorithm
         }
 
         //Randomize Method
-        public int[] Randmize(int[] myArray)
+        public static int[] Randmize(int[] myArray)
         {
-            Random random = new();
+            Random random = new Random();
             for (int i = 0; i < myArray.Length; i++)
             {
                 myArray[i] = random.Next(0, 10 * myArray.Length);
@@ -68,8 +70,8 @@ namespace Algorithm
                 }
                 myArray[j+1] = temp;
             }
-            for(int count=0; count<myArray.Length; count++)
-                Console.WriteLine(myArray[count]);
+            //for(int count=0; count<myArray.Length; count++)
+            //    Console.WriteLine(myArray[count]);
             
            
         }
@@ -90,8 +92,8 @@ namespace Algorithm
                 }
 
             }
-            for (int count = 0; count < myArray.Length; count++)
-                Console.WriteLine(myArray[count]);
+            //for (int count = 0; count < myArray.Length; count++)
+            //    Console.WriteLine(myArray[count]);
 
         }
 
@@ -108,8 +110,8 @@ namespace Algorithm
                     }
                 }
             }
-            for (int count = 0; count < myArray.Length; count++)
-                Console.WriteLine(myArray[count]);
+            //for (int count = 0; count < myArray.Length; count++)
+              //  Console.WriteLine(myArray[count]);
 
         }
          
@@ -173,8 +175,8 @@ namespace Algorithm
             {
                 QuickSort(myArray);
             }
-            for (int count = 0; count < myArray.Length; count++)
-                Console.WriteLine(myArray[count]);
+            //for (int count = 0; count < myArray.Length; count++)
+            //    Console.WriteLine(myArray[count]);
         }
            
 
@@ -218,16 +220,12 @@ namespace Algorithm
                 }
 
         //Method "SortByLamba"-https://www.dotnetperls.com/sort-list-https://www.youtube.com/watch?v=F6iHzYLh2cA
-        //public void SortByLamba(int[] myArray, int x, int y)
-        //{
-        //    Array.Sort(myArray, (x, y)) => x.CompareTo(y));
-        //    Console.WriteLine(myArray);
-        //}
+        
         public void SortByLamba(int[] myArray)
         {
             Array.Sort(myArray, (x, y) => x.CompareTo(y));
-            for (int count = 0; count < myArray.Length; count++)
-                Console.WriteLine(myArray[count]);
+            //for (int count = 0; count < myArray.Length; count++)
+              //  Console.WriteLine(myArray[count]);
 
         }
 
@@ -291,8 +289,9 @@ namespace Algorithm
         {
             return Array.Find(myArray, x => x==item);
 
-
         }
+
+
 
         //Delegated Method
         public delegate int SearchDelegate2(int[] myArray, int item);
@@ -321,7 +320,7 @@ namespace Algorithm
             Console.WriteLine(searchdelgate2(myArray, myArray[(myArray.Length)/2]));
             //searchdelgate2(myArray, myArray[0]);
             myStopwatch.Stop();
-            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+            //elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             Console.WriteLine("MiddleSearchRunTime:" + "" + elapsedTime);
 
             //Last of  the Array
@@ -329,14 +328,288 @@ namespace Algorithm
             Console.WriteLine(searchdelgate2(myArray, myArray[myArray.Length-1 ]));
             //searchdelgate2(myArray, myArray[0]);
             myStopwatch.Stop();
-            elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+            //elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             Console.WriteLine("LastSearchRunTime:" + "" + elapsedTime);
 
 
-
-
         }
-        
+
+
+
+        //Part B
+        //Compare Performance
+        //refences-https://www.tutorialsteacher.com/csharp/csharp-arraylist
+        //reference-https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic?view=net-7.0
+
+        public void performance(int number)
+        {
+            int[] myArray = new int[];
+            List<int> myList = new List<int>();
+            Stack<int> mystack = new Stack<int>();
+            Queue<int> myQeue = new Queue<int>();
+            Dictionary<int, int> myDictionary = new Dictionary<int, int>();
+            SortedDictionary<int, int> mySortedDictionary = new SortedDictionary<int, int>();
+            HashSet<int> myHashset = new HashSet<int>();
+            Random myRandom = new Random();
+            Stopwatch myStopwatch = new Stopwatch();
+            TimeSpan Performts = myStopwatch.Elapsed;
+            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", Performts.Hours, Performts.Minutes, Performts.Seconds, Performts.Milliseconds);
+
+            static void Addition(int element)
+            {
+
+                //Perfomance of Add into Array
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddArray.SetValue(i, AddArray[i]);
+                    AddArray.Initialize();
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in Array:" + "" + elapsedTime);
+
+                //Perfomance of Add into Dynamic Array List
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddList.Add(AddRandom.Next(0, 10 * i));
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Add into Stack
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddStack.Push(AddRandom.Next(0, 10 * i));
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Add into Qeue
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddQeue.Enqueue(AddRandom.Next(0, 10 * i));
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Add into Dictionary
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddDictionary.Add(AddDictionary.Count, AddRandom.Next(0, 10 * i));
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Add into SotedDictionary
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddSortedDic.Add(AddDictionary.Count, AddRandom.Next(0, 10 * i));
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Add into HashSet
+                AddStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    AddHashSet.Add(AddRandom.Next(0, 10 * i));
+
+                }
+                AddStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+
+            }
+
+
+            public void Deletion(int number)
+            {
+                int[] DelArray = new int[number];
+                List<int> DelList = new List<int>();
+                Stack<int> DelStack = new Stack<int>();
+                Queue<int> DelQeue = new Queue<int>();
+                Dictionary<int, int> DelDictionary = new Dictionary<int, int>();
+                SortedDictionary<int, int> DelSortDic = new SortedDictionary<int, int>();
+                HashSet<int> DelHash = new HashSet<int>();
+                Random DelRandom = new Random();
+                Stopwatch DelStopwatch = new Stopwatch();
+                TimeSpan Delts = DelStopwatch.Elapsed;
+                string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", Delts.Hours, Delts.Minutes, Delts.Seconds, Delts.Milliseconds);
+
+                //Perfomance of Delete form Array
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+
+                    int value = DelArray[i];
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in Array:" + "" + elapsedTime);
+
+                //Perfomance of Delete form Dynamic Array List
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    DelList.Remove(DelRandom.Next(0, 10 * i));
+
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Delete form Stack
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    DelStack.Pop();
+
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Delete form Qeue
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    DelQeue.Dequeue();
+
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Delete form Dictionary
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    DelDictionary.Remove(DelDictionary.Count);
+
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Delete form SotedDictionary
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    DelSortDic.Remove(DelSortDic.Count);
+
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Delete form HashSet
+                DelStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    DelHash.Remove(DelRandom.Next(0, 10 * i));
+
+                }
+                DelStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+
+            }
+
+            public void Search(int number)
+            {
+                int[] SearchArray = new int[];
+                List<int> SearchList = new List<int>();
+                Stack<int> SearchStack = new Stack<int>();
+                Queue<int> SearchQeue = new Queue<int>();
+                Dictionary<int, int> SearchDic = new Dictionary<int, int>();
+                SortedDictionary<int, int> SearchSortDic = new SortedDictionary<int, int>();
+                HashSet<int> SearchHash = new HashSet<int>();
+                Random SearcRansom = new Random();
+                Stopwatch SearchStopwatch = new Stopwatch();
+                TimeSpan Searchts = SearchStopwatch.Elapsed;
+                string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}", Searchts.Hours, Searchts.Minutes, Searchts.Seconds, Searchts.Milliseconds);
+
+                //Perfomance of Search in Array
+                SearchStopwatch.Start();
+                for (int i = 0; i < SearchArray.Length; i++)
+                {
+                    int addValue = Array.Find(SearchArray, x => x == number);
+                }
+
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in Array:" + "" + elapsedTime);
+
+                //Perfomance of Search in Dynamic Array List
+                SearchStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    int addValue = SearchList.Find(x => x == number);
+                }
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Search in Stack
+                SearchStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    SearchStack.Pop();
+
+                }
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Search in Qeue
+                SearchStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    SearchQeue.Dequeue();
+
+                }
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Search in Dictionary
+                SearchStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    SearchDic.Remove(SearchDic.Count);
+
+                }
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance of Search in SotedDictionary
+                SearchStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    SearchSortDic.Remove(SearchSortDic.Count);
+
+                }
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+                //Perfomance ofSearch in HashSet
+                SearchStopwatch.Start();
+                for (int i = 0; i < number; i++)
+                {
+                    SearchHash.Remove(SearcRansom.Next(0, 10 * i));
+
+                }
+                SearchStopwatch.Stop();
+                Console.WriteLine("Add in List:" + "" + elapsedTime);
+
+
+            }
+        }
+
+
+
+
 
 
     }
